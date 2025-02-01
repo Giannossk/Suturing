@@ -38,5 +38,5 @@ The source code is documented using Doxygen-style comments:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/SuturingPlugin.git
+   git clone https://github.com/Giannossk/Suturing.git
    cd SuturingPlugin
