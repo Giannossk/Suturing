@@ -1,25 +1,23 @@
 # Suturing Plugin for SOFA Framework
 
-The **Suturing** plugin is a custom SOFA component that enables you to simulate suturing in soft tissue simulation. It combines the functionality of the built-in [SuturePointPerformer](https://www.sofa-framework.org/community/forum/topic/working-example-on-simple-suturing-with-suturepointperformer/) (to pick suture points via mouse interaction) with a [SpringForceField](https://sofa-framework.github.io/doc/components/solidmechanics/spring/springforcefield/) (to simulate the connection between tissue points using spring dynamics).
+The **Suturing** plugin is a dynamic SOFA component that simulates suturing (or tearing) of soft tissues by automatically selecting two candidate points from a tissue MechanicalObject and connecting them with a SpringForceField.
 
 ## Features
 
-- **Point Selection:** Uses the SuturePointPerformer component to let users select two suture points on tissue objects.
-- **Dynamic Suturing:** Automatically creates and updates a spring (via SpringForceField) between the picked points.
-- **Event-Driven Update:** Listens for simulation step events (EndStepEvent) to refresh the suture connection based on the latest picked positions.
-- **Modular Design:** Easily integrates into your existing SOFA scenes and can be configured via scene files.
+- **Dynamic Point Selection:** Automatically selects two suture points based on a chosen criterion (currently extreme x‑coordinates).
+- **Automatic Spring Update:** Updates the SpringForceField every simulation step to reflect the current state.
+- **No Mouse Interaction:** Designed to work without relying on manual mouse picking.
+- **Modular and Extendable:** Developers can easily modify the point-selection criteria or spring parameters.
 
 ## Requirements
 
-- **SOFA Framework:** Compatible with SOFA (v19.12 and later recommended).
-- **Required Plugins:**  
-  - Sofa.Component.UserInteraction  
-  - Sofa.Component.SolidMechanics.Spring  
-- **Build Tools:** CMake (version 3.10 or higher recommended) and a C++ compiler supporting C++11.
+- SOFA Framework (v19.12 or later recommended)
+- Required SOFA plugins: Sofa.Component.UserInteraction, Sofa.Component.SolidMechanics.Spring
+- CMake (3.10+), C++ compiler with C++11 support
 
-## Installation and Build Instructions
+## Build Instructions
 
-1. **Clone the Repository:**
+1. **Clone the repository:**
 
    ```bash
    git clone https://github.com/yourusername/SuturingPlugin.git
