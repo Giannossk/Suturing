@@ -11,13 +11,13 @@ Suturing::Suturing()
     : d_tissueObject(initData(&d_tissueObject,
           core::objectmodel::SPtr< component::statecontainer::MechanicalObject<defaulttype::Vec3d> >(),
           "tissueObject",
-          "Tissue MechanicalObject"))
+          "Tissue MechanicalObject providing particle positions"))
     , d_sutureSpring(initData(&d_sutureSpring,
           core::objectmodel::SPtr< solidmechanics::spring::SpringForceField >(),
           "sutureSpring",
           "SpringForceField connecting the sutured points"))
     , d_autoSuture(initData(&d_autoSuture, true, "autoSuture",
-          "Select suture points dynamically"))
+          "If true, selects suture points dynamically"))
 {
 }
 
@@ -61,6 +61,7 @@ void Suturing::updateSuture(double /*dt*/)
     if (positions.empty())
         return;
 
+    // Select candidate points based on extreme x-coordinates.
     size_t minIndex = 0, maxIndex = 0;
     double minX = positions[0][0], maxX = positions[0][0];
 
